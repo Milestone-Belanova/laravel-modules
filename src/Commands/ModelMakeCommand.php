@@ -34,15 +34,23 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected $description = 'Create a new model for the specified module.';
 
-    public function handle() : int
+    public function handle($create_theme_model = true) : int
     {
         if (parent::handle() === E_ERROR) {
             return E_ERROR;
         }
 
+        if ($create_theme_model) {
+            $this->createThemeModel();
+        }
+
         $this->handleOptionalMigrationOption();
 
         return 0;
+    }
+
+    private function createThemeModel() {
+        $this->call('module:make-theme-model', ['model' => $this->argument('model'), 'module' => $this->getModuleName()]);
     }
 
     /**
