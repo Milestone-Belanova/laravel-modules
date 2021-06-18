@@ -45,7 +45,7 @@ class ControllerMakeCommand extends GeneratorCommand
     }
 
     private function createThemeController() {
-        $this->call('module:make-theme-controller', []);
+        $this->call('module:make-theme-controller', ['controller' => $this->argument('controller'), 'module' => $this->getModuleName()]);
     }
 
     /**

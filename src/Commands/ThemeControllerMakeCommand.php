@@ -23,6 +23,10 @@ class ThemeControllerMakeCommand extends ControllerMakeCommand {
         return 'Theme' . $this->getParentControllerName();
     }
 
+    public function handle(): int {
+        return GeneratorCommand::handle();
+    }
+
     protected function getTemplateContents() {
         $module = $this->laravel['modules']->findOrFail($this->getModuleName());
 
