@@ -2,6 +2,7 @@
 
 namespace Nwidart\Modules\Commands;
 
+use Illuminate\Support\Str;
 use Nwidart\Modules\Support\Stub;
 
 
@@ -24,5 +25,9 @@ class ThemeModelMakeCommand extends ModelMakeCommand {
 
     protected function getStubName() {
         return '/theme/model.stub';
+    }
+
+    protected function getModelName() {
+        return 'Theme' . Str::studly($this->argument('model'));
     }
 }

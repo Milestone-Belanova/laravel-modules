@@ -146,7 +146,7 @@ class ModelMakeCommand extends GeneratorCommand
     /**
      * @return mixed|string
      */
-    private function getModelName()
+    protected function getModelName()
     {
         return Str::studly($this->argument('model'));
     }
