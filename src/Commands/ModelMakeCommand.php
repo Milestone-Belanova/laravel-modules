@@ -119,7 +119,7 @@ class ModelMakeCommand extends GeneratorCommand
     {
         $module = $this->laravel['modules']->findOrFail($this->getModuleName());
 
-        return (new Stub('/model.stub', [
+        return (new Stub($this->getStubName($module), [
             'NAME'              => $this->getModelName(),
             'FILLABLE'          => $this->getFillable(),
             'NAMESPACE'         => $this->getClassNamespace($module),
@@ -177,5 +177,12 @@ class ModelMakeCommand extends GeneratorCommand
         $module = $this->laravel['modules'];
 
         return $module->config('paths.generator.model.namespace') ?: $module->config('paths.generator.model.path', 'Entities');
+    }
+
+    protected function getStubName($module) {
+        if (Str::startsWith($module->getLowerName(), 'component')) {
+            return '/model-component.stub';
+        }
+        return '/model.stub';
     }
 }
