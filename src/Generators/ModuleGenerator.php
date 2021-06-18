@@ -356,6 +356,11 @@ class ModuleGenerator extends Generator
     public function generateFiles()
     {
         foreach ($this->getFiles() as $stub => $file) {
+            if (!Str::startsWith(strtolower($this->getName()), 'component')) {
+                if (in_array($stub, ['views/editor', 'views/front'])) {
+                    continue;
+                }
+            }
             $path = $this->module->getModulePath($this->getName()) . $file;
 
             if (!$this->filesystem->isDirectory($dir = dirname($path))) {

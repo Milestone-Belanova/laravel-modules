@@ -1,0 +1,7 @@
+@extends('admin.layouts.components.component', [
+    'type' => '$STUDLY_NAME$',
+    'itemID' => $item->id,
+    'postID' => $post->id,
+])
+@section('body')
+@overwrite

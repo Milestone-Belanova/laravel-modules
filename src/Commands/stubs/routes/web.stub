@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$controller = '$STUDLY_NAME$Controller';
+$controller = 'Theme$STUDLY_NAME$Controller';
 
-Route::prefix('$LOWER_NAME$')->group(function() {
+Route::prefix('$LOWER_NAME$')->group(function() use ($controller) {
     Route::get('/', "$controller@index");
 });

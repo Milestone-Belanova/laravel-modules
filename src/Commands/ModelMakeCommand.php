@@ -179,8 +179,8 @@ class ModelMakeCommand extends GeneratorCommand
         return $module->config('paths.generator.model.namespace') ?: $module->config('paths.generator.model.path', 'Entities');
     }
 
-    protected function getStubName($module) {
-        if (Str::startsWith($module->getLowerName(), 'component')) {
+    protected function getStubName() {
+        if (Str::startsWith(strtolower($this->getName()), 'component')) {
             return '/model-component.stub';
         }
         return '/model.stub';
