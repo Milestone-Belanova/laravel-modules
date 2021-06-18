@@ -2,25 +2,14 @@
 
 namespace Nwidart\Modules\Commands;
 
-use Illuminate\Support\Str;
 use Nwidart\Modules\Support\Stub;
 
 
 class ThemeControllerMakeCommand extends ControllerMakeCommand {
     protected $name = 'module:make-theme-controller';
 
-    protected function getParentControllerName() {
-        $controller = Str::studly($this->argument('controller'));
-
-        if (Str::contains(strtolower($controller), 'controller') === false) {
-            $controller .= 'Controller';
-        }
-
-        return $controller;
-    }
-
     protected function getControllerName() {
-        return 'Theme' . $this->getParentControllerName();
+        return 'Theme' . parent::getControllerName();
     }
 
     public function handle(): int {
@@ -33,11 +22,11 @@ class ThemeControllerMakeCommand extends ControllerMakeCommand {
         return (new Stub($this->getStubName(), [
             'CLASS_NAMESPACE'   => $this->getClassNamespace($module),
             'CLASS'             => $this->getControllerNameWithoutNamespace(),
-            'PARENT_CLASS'      => class_basename($this->getParentControllerName()),
+            'PARENT_CLASS'      => class_basename(parent::getControllerName()),
         ]))->render();
     }
 
     protected function getStubName() {
-        return '/theme-controller.stub';
+        return '/theme/controller.stub';
     }
 }
