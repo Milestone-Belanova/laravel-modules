@@ -34,6 +34,20 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected $description = 'Generate new restful controller for the specified module.';
 
+    public function handle(): int {
+        if (parent::handle() === E_ERROR) {
+            return E_ERROR;
+        }
+
+        $this->createThemeController();
+
+        return 0;
+    }
+
+    private function createThemeController() {
+        $this->call('module:make-theme-controller', []);
+    }
+
     /**
      * Get controller name.
      *

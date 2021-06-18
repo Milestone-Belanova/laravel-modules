@@ -15,6 +15,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected $commands = [
         Commands\CommandMakeCommand::class,
         Commands\ControllerMakeCommand::class,
+        Commands\ThemeControllerMakeCommand::class,
         Commands\DisableCommand::class,
         Commands\DumpCommand::class,
         Commands\EnableCommand::class,
