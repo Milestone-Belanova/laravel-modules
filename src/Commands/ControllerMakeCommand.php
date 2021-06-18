@@ -124,7 +124,7 @@ class ControllerMakeCommand extends GeneratorCommand
     /**
      * @return array|string
      */
-    private function getControllerNameWithoutNamespace()
+    protected function getControllerNameWithoutNamespace()
     {
         return class_basename($this->getControllerName());
     }
