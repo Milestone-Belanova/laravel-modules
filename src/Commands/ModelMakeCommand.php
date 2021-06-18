@@ -2,6 +2,7 @@
 
 namespace Nwidart\Modules\Commands;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 use Nwidart\Modules\Support\Stub;
@@ -180,7 +181,7 @@ class ModelMakeCommand extends GeneratorCommand
     }
 
     protected function getStubName() {
-        if (Str::startsWith(strtolower($this->getName()), 'component')) {
+        if (Str::startsWith(strtolower($this->argument('model')), 'component')) {
             return '/model-component.stub';
         }
         return '/model.stub';
