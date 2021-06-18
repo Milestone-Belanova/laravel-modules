@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 $controller = 'Theme$STUDLY_NAME$Controller';
 
-Route::prefix('$LOWER_NAME$')->group(function() use ($controller) {
+Route::group(['middleware' => 'web', 'prefix' => 'admin/$LOWER_NAME$', 'namespace' => '\Modules\$STUDLY_NAME$\Http\Controllers'], function() use ($controller) {
     Route::get('/', "$controller@index");
 });
