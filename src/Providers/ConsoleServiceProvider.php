@@ -31,6 +31,7 @@ class ConsoleServiceProvider extends ServiceProvider
         Commands\ListCommand::class,
         Commands\ModuleDeleteCommand::class,
         Commands\ModuleMakeCommand::class,
+        Commands\ModuleThemeMigrateCommand::class,
         Commands\FactoryMakeCommand::class,
         Commands\PolicyMakeCommand::class,
         Commands\RequestMakeCommand::class,
