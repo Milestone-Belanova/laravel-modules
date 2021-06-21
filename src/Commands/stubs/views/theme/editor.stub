@@ -1,3 +1,4 @@
-@section('content')
+@extends('$LOWER_NAME$::editor')
+@section('body')
     @parent {{-- Remove or comment out this line to completely overwrite the base editor --}}
 @overwrite

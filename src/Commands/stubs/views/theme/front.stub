@@ -1,0 +1,3 @@
+@extends('$LOWER_NAME$::front')
+@section('content')
+@endsection

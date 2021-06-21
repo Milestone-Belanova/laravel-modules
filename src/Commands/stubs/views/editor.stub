@@ -4,4 +4,4 @@
     'postID' => $post->id,
 ])
 @section('body')
-@overwrite
+@endsection

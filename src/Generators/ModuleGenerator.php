@@ -357,7 +357,7 @@ class ModuleGenerator extends Generator
     {
         foreach ($this->getFiles() as $stub => $file) {
             if (!Str::startsWith(strtolower($this->getName()), 'component')) {
-                if (in_array($stub, ['views/editor', 'views/front'])) {
+                if (in_array($stub, ['views/editor', 'views/theme/editor', 'views/front', 'views/theme/front'])) {
                     continue;
                 }
             }

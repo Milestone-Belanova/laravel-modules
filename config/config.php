@@ -33,7 +33,9 @@ return [
             'routes/api' => 'Routes/api.php',
             'views/index' => 'Resources/views/index.blade.php',
             'views/editor' => 'Resources/views/editor.blade.php',
+            'views/theme/editor' => 'Resources/views/theme/editor.blade.php',
             'views/front' => 'Resources/views/front.blade.php',
+            'views/theme/front' => 'Resources/views/theme/front.blade.php',
             'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
@@ -49,6 +51,8 @@ return [
             'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE', 'PROVIDER_NAMESPACE'],
             'views/index' => ['LOWER_NAME'],
             'views/editor' => ['STUDLY_NAME'],
+            'views/theme/editor' => ['LOWER_NAME'],
+            'views/theme/front' => ['LOWER_NAME'],
             'views/master' => ['LOWER_NAME', 'STUDLY_NAME'],
             'scaffold/config' => ['STUDLY_NAME'],
             'composer' => [
