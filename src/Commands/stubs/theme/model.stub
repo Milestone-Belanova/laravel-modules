@@ -3,5 +3,5 @@
 namespace $NAMESPACE$;
 
 class $CLASS$ extends $PARENT_CLASS$ {
-
+    protected $table = '$TABLE_NAME$';
 }

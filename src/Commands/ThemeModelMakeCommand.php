@@ -20,6 +20,7 @@ class ThemeModelMakeCommand extends ModelMakeCommand {
             'NAMESPACE'         => $this->getClassNamespace($module),
             'CLASS'             => 'Theme' . $this->getClass(),
             'PARENT_CLASS'      => $this->getClass(),
+            'TABLE_NAME'        => Str::snake(Str::pluralStudly($this->getClass())),
         ]))->render();
     }
 
