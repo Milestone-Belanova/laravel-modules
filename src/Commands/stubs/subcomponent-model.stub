@@ -5,7 +5,7 @@ namespace $NAMESPACE$;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ComponentTrait;
 
-class $CLASS$ extends Model
+class $MODULE$Item extends Model
 {
     use ComponentTrait;
 

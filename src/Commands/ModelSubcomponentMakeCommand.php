@@ -163,7 +163,7 @@ class ModelSubcomponentMakeCommand extends GeneratorCommand
      */
     protected function getModelName()
     {
-        return Str::studly($this->argument('model')) . 'Item';
+        return Str::studly($this->argument('model'));
     }
 
     /**

@@ -359,7 +359,7 @@ class ModuleThemeGenerator extends Generator
                 'module' => $this->getName(),
             ]);
             if ($this->subcomponent) {
-                $this->console->call('module:make-subcomponent-model', [
+                $this->console->call('module:make-theme-subcomponent-model', [
                     'model' => $this->getName() . 'Item',
                     'module' => $this->getName(),
                 ]);
