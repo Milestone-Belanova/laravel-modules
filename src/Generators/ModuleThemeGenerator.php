@@ -300,6 +300,7 @@ class ModuleThemeGenerator extends Generator
                     $contents = "@section('content')\n" . $contents . "\n@endsection";
                 }
                 $this->filesystem->put($path, $contents);
+                $this->console->info("Updated : {$path}");
             }
 
         }
@@ -357,6 +358,12 @@ class ModuleThemeGenerator extends Generator
                 'model' => $this->getName(),
                 'module' => $this->getName(),
             ]);
+            if ($this->subcomponent) {
+                $this->console->call('module:make-subcomponent-model', [
+                    'model' => $this->getName() . 'Item',
+                    'module' => $this->getName(),
+                ]);
+            }
         }
     }
 
