@@ -5,6 +5,7 @@ namespace Nwidart\Modules\Generators;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Console\Command as Console;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Nwidart\Modules\Contracts\ActivatorInterface;
 use Nwidart\Modules\FileRepository;
@@ -364,14 +365,14 @@ class ModuleGenerator extends Generator
     public function generateFiles()
     {
         foreach ($this->getFiles() as $stub => $file) {
+            if (!$this->subcomponent) {
+                if (in_array($stub, ['views/item-editor', 'views/theme/item-editor', 'views/item-front', 'views/theme/item-front'])) {
+                    continue;
+                }
+            }
             if (!Str::startsWith(strtolower($this->getName()), 'component')) {
                 if (in_array($stub, ['views/editor', 'views/theme/editor', 'views/front', 'views/theme/front'])) {
                     continue;
-                }
-                if (!$this->subcomponent) {
-                    if (in_array($stub, ['views/item-editor', 'views/theme/item-editor', 'views/item-front', 'views/theme/item-front'])) {
-                        continue;
-                    }
                 }
             }
             if ($this->subcomponent) {

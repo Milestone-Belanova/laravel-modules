@@ -10,9 +10,12 @@ class MigrationSubcomponentMakeCommand extends MigrationMakeCommand {
     protected $name = 'module:make-subcomponent-migration';
 
     protected function getOptions() {
-        return parent::getOptions() + [
-            ['parent', 'p', InputOption::VALUE_REQUIRED, 'The name of the parent table.'],
-        ];
+        return array_merge(
+            parent::getOptions(),
+            [
+                ['parent', 'p', InputOption::VALUE_REQUIRED, 'The name of the parent table.'],
+            ],
+        );
     }
 
     protected function getTemplateContents() {
@@ -24,5 +27,9 @@ class MigrationSubcomponentMakeCommand extends MigrationMakeCommand {
             'PARENT_TABLE' => $this->option('parent'),
             'FIELDS' => $this->getSchemaParser()->render(),
         ]);
+    }
+
+    protected function getSchemaName() {
+        return 'sub' . $this->argument('name');
     }
 }

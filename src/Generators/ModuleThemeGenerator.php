@@ -275,6 +275,11 @@ class ModuleThemeGenerator extends Generator
 
     public function updateFiles() {
         foreach ($this->getFiles() as $stub => $file) {
+            if (!$this->subcomponent) {
+                if (in_array($stub, ['views/item-editor', 'views/theme/item-editor', 'views/item-front', 'views/theme/item-front'])) {
+                    continue;
+                }
+            }
             if (!in_array($stub, ['views/editor', 'views/front', 'views/item-editor', 'views/item-front'])) {
                 continue;
             }

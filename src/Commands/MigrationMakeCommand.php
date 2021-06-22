@@ -130,7 +130,7 @@ class MigrationMakeCommand extends GeneratorCommand
     /**
      * @return array|string
      */
-    private function getSchemaName()
+    protected function getSchemaName()
     {
         return $this->argument('name');
     }
