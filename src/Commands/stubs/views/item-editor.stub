@@ -1,0 +1,7 @@
+@php $component_prefix = "$LOWER_NAME$" @endphp
+@extends('admin.layouts.components.subcomponents.card', [
+    "title" => "$TYPE$ Item",
+    'type'  => '$STUDLY_NAME$Item'
+])
+@section('body')
+@endsection

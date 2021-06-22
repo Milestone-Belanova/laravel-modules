@@ -41,6 +41,7 @@ class ModuleMakeCommand extends Command
                 ->setConsole($this)
                 ->setForce($this->option('force'))
                 ->setType($this->getModuleType())
+                ->setSubcomponent($this->option('subcomponent') === true)
                 ->setActive(!$this->option('disabled'))
                 ->generate();
 
@@ -72,6 +73,7 @@ class ModuleMakeCommand extends Command
             ['web', null, InputOption::VALUE_NONE, 'Generate a web module.'],
             ['disabled', 'd', InputOption::VALUE_NONE, 'Do not enable the module at creation.'],
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when the module already exists.'],
+            ['subcomponent', 's', InputOption::VALUE_NONE, 'Generate a subcomponent-ready module.'],
         ];
     }
 

@@ -76,6 +76,8 @@ class ModuleGenerator extends Generator
      */
     protected $isActive = false;
 
+    protected $subcomponent = false;
+
     /**
      * The constructor.
      * @param $name
@@ -282,6 +284,12 @@ class ModuleGenerator extends Generator
         return $this;
     }
 
+    public function setSubcomponent($subcomponent) {
+        $this->subcomponent = $subcomponent;
+
+        return $this;
+    }
+
     /**
      * Generate the module.
      */
@@ -360,6 +368,20 @@ class ModuleGenerator extends Generator
                 if (in_array($stub, ['views/editor', 'views/theme/editor', 'views/front', 'views/theme/front'])) {
                     continue;
                 }
+                if (!$this->subcomponent) {
+                    if (in_array($stub, ['views/item-editor', 'views/theme/item-editor', 'views/item-front', 'views/theme/item-front'])) {
+                        continue;
+                    }
+                }
+            }
+            if ($this->subcomponent) {
+                if ($stub === 'routes/web') {
+                    continue;
+                }
+            } else {
+                if ($stub === 'routes/subcomponent-web') {
+                    continue;
+                }
             }
             $path = $this->module->getModulePath($this->getName()) . $file;
 
@@ -399,6 +421,7 @@ class ModuleGenerator extends Generator
 
         if (GenerateConfigReader::read('controller')->generate() === true) {
             $options = $this->type=='api'?['--api'=>true]:[];
+            $options += $this->subcomponent ? ['--subcomponent' => true] : [];
             $this->console->call('module:make-controller', [
                 'controller' => $this->getName() . 'Controller',
                 'module' => $this->getName(),
@@ -406,11 +429,12 @@ class ModuleGenerator extends Generator
         }
 
         if (GenerateConfigReader::read('model')->generate() === true) {
+            $options = $this->subcomponent ? ['--subcomponent' => true] : [];
             $this->console->call('module:make-model', [
                 'model' => $this->getName(),
                 'module' => $this->getName(),
                 '-m' => true,
-            ]);
+            ] + $options);
         }
     }
 
@@ -526,6 +550,10 @@ class ModuleGenerator extends Generator
     protected function getStudlyNameReplacement()
     {
         return $this->getName();
+    }
+
+    protected function getTypeReplacement() {
+        return str_replace('Component', '', $this->getName());
     }
 
     /**

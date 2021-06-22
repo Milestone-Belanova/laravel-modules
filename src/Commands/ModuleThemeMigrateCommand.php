@@ -36,6 +36,7 @@ class ModuleThemeMigrateCommand extends Command {
                 ->setActivator($this->laravel[ActivatorInterface::class])
                 ->setConsole($this)
                 ->setType($this->getModuleType($name))
+                ->setSubcomponent($this->option('subcomponent') === true)
                 ->generate();
 
             if ($code === E_ERROR) {
@@ -55,6 +56,12 @@ class ModuleThemeMigrateCommand extends Command {
     {
         return [
             ['names', InputArgument::IS_ARRAY, 'The names of module to be migrated.'],
+        ];
+    }
+
+    protected function getOptions() {
+        return [
+            ['subcomponent', 's', InputOption::VALUE_NONE]
         ];
     }
 

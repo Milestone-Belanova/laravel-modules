@@ -1,0 +1,21 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\ComponentTrait;
+
+class $CLASS$ extends Model
+{
+    use ComponentTrait;
+
+    protected $fillable = $FILLABLE$;
+
+    public function rules() {
+        return [];
+    }
+
+    public function subcomponents() {
+        return $this->hasMany($CLASS$Item::class, 'parent_id')->orderBy('id');
+    }
+}

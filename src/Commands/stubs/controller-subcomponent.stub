@@ -1,0 +1,15 @@
+<?php
+
+namespace $CLASS_NAMESPACE$;
+
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
+
+class $CLASS$ extends Controller {
+    public function add($id, $i) {
+        return find_view('$LOWER_NAME$::item.editor', [
+            'i'         => $i,
+            'itemID'    => $id,
+        ]);
+    }
+}

@@ -62,6 +62,8 @@ class ModuleThemeGenerator extends Generator
      */
     protected $type = 'web';
 
+    protected $subcomponent = false;
+
     /**
      * The constructor.
      * @param $name
@@ -220,6 +222,12 @@ class ModuleThemeGenerator extends Generator
         return $this;
     }
 
+    public function setSubcomponent($subcomponent) {
+        $this->subcomponent = $subcomponent;
+
+        return $this;
+    }
+
     /**
      * Get the list of folders will created.
      *
@@ -267,7 +275,7 @@ class ModuleThemeGenerator extends Generator
 
     public function updateFiles() {
         foreach ($this->getFiles() as $stub => $file) {
-            if (!in_array($stub, ['views/editor', 'views/front'])) {
+            if (!in_array($stub, ['views/editor', 'views/front', 'views/item-editor', 'views/item-front'])) {
                 continue;
             }
             $path = $this->module->getModulePath($this->getName()) . $file;
@@ -309,6 +317,11 @@ class ModuleThemeGenerator extends Generator
         foreach ($this->getFiles() as $stub => $file) {
             if (!Str::contains($stub, 'theme')) {
                 continue;
+            }
+            if (!$this->subcomponent) {
+                if (Str::contains($stub, 'item')) {
+                    continue;
+                }
             }
             $path = $this->module->getModulePath($this->getName()) . $file;
 
