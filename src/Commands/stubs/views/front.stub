@@ -1,2 +1,2 @@
-@section('content')
+@section('$LOWER_NAME$-content-$RANDOM$')
 @endsection

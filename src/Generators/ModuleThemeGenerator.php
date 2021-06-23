@@ -64,6 +64,8 @@ class ModuleThemeGenerator extends Generator
 
     protected $subcomponent = false;
 
+    protected $random = null;
+
     /**
      * The constructor.
      * @param $name
@@ -474,6 +476,13 @@ class ModuleThemeGenerator extends Generator
     protected function getAuthorNameReplacement()
     {
         return $this->module->config('composer.author.name');
+    }
+
+    protected function getRandomReplacement() {
+        if (empty($this->random)) {
+            $this->random = Str::random();
+        }
+        return $this->random;
     }
 
     /**
