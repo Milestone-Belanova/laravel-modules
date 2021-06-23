@@ -1,2 +1,3 @@
-@section('$LOWER_NAME$-content-$RANDOM$')
+@section('$LOWER_NAME$-content')
 @endsection
+@yield('$LOWER_NAME$-content')

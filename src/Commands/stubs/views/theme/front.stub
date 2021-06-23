@@ -1,4 +1,4 @@
 @extends('$LOWER_NAME$::front')
-@section('$LOWER_NAME$-content-$RANDOM$')
+@section('$LOWER_NAME$-content')
     @parent {{-- Remove or comment out this line to completely overwrite the base editor --}}
 @overwrite
