@@ -1,2 +1,3 @@
-@section('content')
+@section('sub-content')
 @endsection
+@yield('sub-content')

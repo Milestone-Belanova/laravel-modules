@@ -1,4 +1,4 @@
 @extends('$LOWER_NAME$::item.front')
-@section('content')
+@section('sub-content')
     @parent {{-- Remove or comment out this line to completely overwrite the base editor --}}
 @overwrite
